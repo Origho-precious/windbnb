@@ -8,9 +8,6 @@ const Home = (props) => {
     let numOfStay = [];
     const [ stays, setStays ] = useState(null);
 
-    const getNumOfStays = () => {
-        setStays(numOfStay.length)
-    }
 
     useEffect(() => {
         const fetchData = async () => {
@@ -19,12 +16,16 @@ const Home = (props) => {
             setResults(response.data);
 
             setSearchQuery(props.search);
+                    
+            const getNumOfStays = () => {
+                setStays(numOfStay.length)
+            }
 
             getNumOfStays()
         };
 
        fetchData()
-    }, [searchQuery, props.search])
+    }, [searchQuery, props.search, results, numOfStay.length])
 
     const renderHouses = () => {
         if(results && !searchQuery){
@@ -44,6 +45,7 @@ const Home = (props) => {
         }
 
         if(results && searchQuery){
+            // eslint-disable-next-line array-callback-return
             return results.map(item => {
                 if((`${item.city}, ${item.country}` === searchQuery.location) && (item.maxGuests === searchQuery.guests || item.maxGuests > searchQuery.guests)){
                     numOfStay.push(item)
