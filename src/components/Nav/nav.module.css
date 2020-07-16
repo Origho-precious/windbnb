@@ -1,0 +1,269 @@
+
+.Nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    max-width: 100%;
+    margin: auto;
+}
+
+.Nav.modal::before{
+    content: '';
+    position: absolute;
+    top: 3.2rem;
+    left: -7rem;
+    bottom: 0;
+    right: 0;
+    height: 100vh;
+    width: 100vw;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+.Nav .logo{
+    color: rgba(235, 87, 87, 0.8);
+    font-size: 1.2rem;
+}
+
+.Nav .search{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid #ccc;
+    border-radius: 2rem;
+    height: 50px;
+    position: relative;
+}
+
+.Nav .search .current{
+    width: 180px;
+    margin: auto;
+}
+
+.Nav .search .location,
+.Nav .search .guests{
+    cursor: pointer;
+    border-right: 2px solid #ccc;
+    margin-right: 1rem;
+    padding: 0.7rem 0.8rem;
+}
+
+.Nav .search .guests input{
+    height: 30px;
+    padding: 0 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.75rem;
+    outline: none;
+}
+
+.Nav .search .searchBtn{
+    color: rgba(235, 87, 87, 0.8);
+    cursor: pointer;
+    margin-right: 1rem;
+    border: none;
+    outline: none;
+    padding: 0.79rem 1rem;
+    transition: all 0.75s;
+}
+
+.Nav .search .searchBtn:hover{
+    background-color: rgba(235, 87, 87, 0.8);
+    color: #FFF;
+}
+
+.Nav .search .searchBtn i{
+    font-size: 1.3rem;
+}
+
+.Nav .search .options{
+    position: absolute;
+    padding: 1.5rem;
+    margin-top: 0.8rem;
+    background: #FFF;
+    z-index: 10;
+}
+
+.Nav .search .guests .options .controls{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 1rem;
+}
+
+.Nav .search .guests .options .controls  div{
+    cursor: pointer;
+    border: 1px solid #ccc;
+    outline: none;
+    color: #000;
+    font-size: 1.3rem;
+    padding: 0 0.5rem;
+}
+
+.Nav .search .guests button{
+    cursor: pointer;
+    border: none;
+    border-radius: 0.75rem;
+    outline: none;
+    background: rgba(235, 87, 87, 0.8);
+    color: #fff;
+    padding: 0.4rem 1rem;
+    margin-top: 2rem;
+    width: 40%;
+    position: relative;
+    z-index: 2;
+}
+
+.Nav .search .guests button:hover,
+.Nav .search .location .options p:hover{
+    background: transparent;
+    color: rgba(235, 87, 87, 0.8);
+}
+
+.Nav .search .hide{
+    display: none;
+}
+
+.Nav .search .show1{
+    display: block;
+    left: 0.3rem;
+    padding-right: 2.7rem;
+}
+
+.Nav .search .show2{
+    display: block;
+    left: 13rem;
+    margin-right: 3.29rem;
+    margin-right: 0;
+}
+
+.Nav .search .location .options p{
+    cursor: pointer;
+    max-width: 100%;
+    margin: 1rem 0 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+    padding: 0.5rem 0.4rem;
+    background: rgba(235, 87, 87, 0.8);
+    color: #FFF;
+}
+
+@media(max-width: 850px){
+    .Nav{
+        flex-direction: column;
+        align-items: unset;
+    }
+
+    .Nav.modal::before{
+        top: 7rem;
+        left: -4rem;
+        right: -3rem;
+    }
+
+    .Nav .logo{
+        margin-bottom: 2rem;
+    }
+
+    .Nav .search{
+        max-width: 100%;
+        justify-content: center;
+        margin: auto;
+        height: 50px;
+    }
+
+    .Nav .search .location,
+    .Nav .search .guests{
+        text-align: center;
+        margin-right: 0;
+        padding: 0;
+        max-width: max-content;
+    }
+    
+    .Nav .search .current{
+        width: 180px;
+        margin: auto;
+    }
+
+    .Nav .search .options{
+        top: 2.25rem;
+    }
+        
+    .Nav .search .searchBtn{
+        padding: 0.65rem 1rem;
+        margin-left: 0.5rem;
+    }
+
+}
+
+@media(max-width: 499px){
+    .Nav{
+        flex-direction: column;
+        align-items: unset;
+        max-width: 100%;
+        margin: auto;
+    }
+    
+    .Nav.modal::before{
+        top: 7rem;
+        left: -0.5rem;
+        right: -1rem;
+    }
+
+    .Nav .search{
+        max-width: 100%;
+        margin: auto;
+    }
+
+    .Nav .search .current{
+        width: 150px;
+        margin: auto;
+        font-size: 0.8rem;
+    }
+    
+    .Nav .search .searchBtn{
+        padding: 0.6rem;
+    }
+        
+    .Nav .search .options{
+        position: absolute;
+        padding: 1.2rem;
+        margin-top: 0.8rem;
+        background: #FFF;
+        z-index: 10;
+    }
+        
+    .Nav .search .show1{
+        left: 0.3rem;
+        padding-right: 1rem;
+    }
+
+    .Nav .search .show2{
+        display: block;
+        left: 9rem;
+        margin-right: 0;
+        font-size: 0.7rem;
+    }
+        
+    .Nav .search .guests button{
+        width: 70%;
+    }
+
+    .Nav .search .location .options p{
+        font-size: 0.8rem;
+    }
+}
+
+@media(max-width: 320px){
+    
+    .Nav .search .current{
+        width: 120px;
+        margin: auto;
+        font-size: 0.7rem;
+    }
+
+    
+    .Nav .search .show2{
+        left: 7.5rem;
+    }
+}
