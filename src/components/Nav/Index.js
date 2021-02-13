@@ -8,7 +8,7 @@ const Search = (props) => {
     const [guests, setGuests] = useState(0);
     // Search term passes 
     const [term, setTerm] = useState(null);
-    // Dropdoen handler state
+    // Dropdown handler state
     const [locDropdown, setLocDropdown] = useState(false)
     const [guestsDropdown, setGuestsDropdown] = useState(false)
 

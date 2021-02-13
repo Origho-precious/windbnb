@@ -21,6 +21,7 @@
 .Home .gridItem img{
     border-radius: 1.2rem;
     max-width: 100%;
+    width: 100%;
     max-height: 225px;
     margin: auto;
 }
