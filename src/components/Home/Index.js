@@ -2,26 +2,31 @@ import React, { useState, useEffect } from "react";
 import styles from "./Home.module.css";
 import { data } from "../../data/stays";
 
-const Home = (props) => {
-	const [results, setResults] = useState(null);
-	const [searchQuery, setSearchQuery] = useState(null);
-	const [stays, setStays] = useState(0);
+const Home = ({ search }) => {
+	const [results, setResults] = useState(data);
+	const [stays, setStays] = useState(data.length);
 
 	useEffect(() => {
-		const fetchData = () => {
-			setResults(data);
+		const processSearchResult = () => {
+			if (search) {
+				const filteredResult = data.filter((item) => {
+					return (
+						`${item.city}, ${item.country}` === search.location &&
+						item.maxGuests > search.guests
+					);
+				});
 
-			setSearchQuery(props.search);
-
-			setStays(data.length);
+				setResults(filteredResult);
+				setStays(filteredResult.length);
+			}
 		};
 
-		fetchData();
-	}, [searchQuery, props.search, results]);
+		processSearchResult();
+	}, [search]);
 
 	const renderHouses = () => {
-		if (results && !searchQuery) {
-			return results.map((item) => (
+		return results.map((item) => {
+			return (
 				<div className={styles.gridItem} key={item.title}>
 					<img src={item.photo} alt="house" />
 					<div className={styles.texts}>
@@ -37,32 +42,8 @@ const Home = (props) => {
 					</div>
 					<p>{item.title}</p>
 				</div>
-			));
-		}
-
-		if (results && searchQuery) {
-			return results.map((item) => {
-				return `${item.city}, ${item.country}` === searchQuery.location &&
-					(item.maxGuests === searchQuery.guests ||
-						item.maxGuests > searchQuery.guests) ? (
-					<div className={styles.gridItem} key={item.title}>
-						<img src={item.photo} alt="house" />
-						<div className={styles.texts}>
-							{item.superHost ? (
-								<span className={styles.superHost}>SUPERHOST</span>
-							) : null}
-							<span>
-								{item.type} &nbsp; {item.beds ? `${item.beds} beds` : null}
-							</span>
-							<span>
-								<i className="fas fa-star"></i> {item.rating}
-							</span>
-						</div>
-						<p>{item.title}</p>
-					</div>
-				) : null;
-			});
-		}
+			);
+		});
 	};
 
 	return (
