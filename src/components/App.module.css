@@ -1,12 +1,10 @@
-
-.App{
-    max-width: 85%;
-    margin: 2rem auto;
+.App {
+	max-width: 85%;
+	margin: 2rem auto;
 }
 
-
-@media(max-width: 700px){
-    .App{
-        max-width: 95%;
-    }
+@media (max-width: 700px) {
+	.App {
+		max-width: 95%;
+	}
 }
