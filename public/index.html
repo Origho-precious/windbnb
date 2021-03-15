@@ -1,15 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Windbnb: Airbnb clone for stays in Finland"/>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/240142b5be.js" crossorigin="anonymous"></script>
-    <title>Windbnb</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-  </body>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/png" href="./images/logo2.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="theme-color" content="#EF7B7B" />
+		<meta
+			name="description"
+			content="Windbnb: Airbnb clone for stays in Finland"
+		/>
+		<link rel="apple-touch-icon" href="./images/logo.png" />
+		<link rel="manifest" href="./manifest.json" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap"
+			rel="stylesheet"
+		/>
+		<script
+			src="https://kit.fontawesome.com/240142b5be.js"
+			crossorigin="anonymous"
+		></script>
+		<title>Windbnb</title>
+	</head>
+	<body>
+		<noscript>You need to enable JavaScript to run this app.</noscript>
+		<div id="root"></div>
+
+		<script>
+			if ("serviceWorker" in navigator) {
+				window.addEventListener("load", () => {
+					navigator.serviceWorker
+						.register("./serviceworker.js")
+						.then((reg) => console.log("Serviceworkers Success", reg.scope))
+						.catch((error) => console.log(error));
+				});
+			}
+		</script>
+	</body>
 </html>
